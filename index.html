@@ -185,16 +185,16 @@ z-index:0}
 @media (orientation: landscape) and (max-height: 700px) and (max-width: 1100px){
   html,body{width:100%;height:100%;overflow:hidden}
   #app{
-    width:100vw;height:100vh;min-width:0;min-height:0;
+    width:100vw;height:100dvh;min-width:0;min-height:0;
     display:grid;
-    grid-template-columns:minmax(0,1fr) minmax(205px,29vw);
-    grid-template-rows:auto minmax(0,1fr);
-    gap:5px;padding:5px;
+    grid-template-columns:minmax(0,1fr) minmax(190px,27vw);
+    grid-template-rows:44px minmax(0,1fr);
+    gap:4px;padding:4px;
     overflow:hidden;
   }
   header{
     grid-column:1/-1;
-    min-height:42px;padding:2px 6px;
+    min-height:0;height:44px;padding:2px 6px;
     gap:6px;overflow:hidden;
   }
   .logo{font-size:clamp(18px,3.2vw,27px);line-height:1.05;white-space:nowrap}
@@ -204,10 +204,10 @@ z-index:0}
 
   .main{
     grid-column:1;grid-row:2;
-    min-width:0;min-height:0;
+    min-width:0;min-height:0;height:100%;
     display:grid;
-    grid-template-columns:minmax(0,1.18fr) minmax(205px,.82fr);
-    grid-template-rows:auto minmax(0,1fr) auto;
+    grid-template-columns:minmax(0,1.15fr) minmax(190px,.85fr);
+    grid-template-rows:42px minmax(0,1fr) 34px;
     gap:4px;
     overflow:hidden;
   }
@@ -224,8 +224,8 @@ z-index:0}
     overflow:hidden;
   }
   .wheel-wrap{
-    width:min(66vh,100%,360px);
-    height:min(66vh,100%,360px);
+    width:min(58vh,calc(100% - 8px),340px);
+    height:min(58vh,calc(100% - 8px),340px);
     min-width:0;min-height:0;
   }
   .wheel-shell{border-width:6px;box-shadow:0 0 0 3px #4c2611,inset 0 0 0 4px #f5d56b,0 10px 24px #000c}
@@ -272,7 +272,7 @@ z-index:0}
 
   .history{
     grid-column:2;grid-row:2;
-    min-width:0;min-height:0;height:auto;margin:0;
+    min-width:0;min-height:0;height:100%;margin:0;
     padding:5px;border-width:1px;border-radius:10px;
     display:grid;grid-template-rows:auto minmax(0,1fr) auto;
     overflow:hidden;
@@ -285,6 +285,17 @@ z-index:0}
   .dot{width:9px;height:9px}
   .person-mini{font-size:10px}
   .history-foot{font-size:7px;padding-top:3px;white-space:nowrap;overflow:hidden}
+
+  /* very short landscape screens: keep every game element inside the viewport */
+  @media (max-height:560px){
+    #app{grid-template-rows:38px minmax(0,1fr);gap:3px;padding:3px}
+    header{height:38px}
+    .logo{font-size:18px}.logo small{font-size:7px}
+    .actions .btn{font-size:9px;padding:3px 5px}
+    .main{grid-template-rows:36px minmax(0,1fr) 30px;gap:3px}
+    .wheel-wrap{width:min(50vh,calc(100% - 6px),285px);height:min(50vh,calc(100% - 6px),285px)}
+    .result-box{height:36px}.controlbar{min-height:30px}
+  }
 
   .modal-card{width:min(92vw,500px);max-height:86vh;padding:12px}
 }

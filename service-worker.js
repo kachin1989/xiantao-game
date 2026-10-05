@@ -1,4 +1,4 @@
-const CACHE_NAME = 'xiantao-pwa-v1';
+const CACHE_NAME = 'xiantao-pwa-v2-landscape';
 const APP_SHELL = [
   './',
   './index.html',

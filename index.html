@@ -188,14 +188,13 @@ z-index:0}
     width:100vw;height:100dvh;min-width:0;min-height:0;
     display:grid;
     grid-template-columns:minmax(0,1fr) minmax(190px,27vw);
-    grid-template-rows:44px minmax(0,1fr);
+    grid-template-rows:minmax(0,1fr);
     gap:4px;padding:4px;
     overflow:hidden;
   }
+  /* 横屏时隐藏页面顶部标题/功能栏，把屏幕高度留给游戏本体 */
   header{
-    grid-column:1/-1;
-    min-height:0;height:44px;padding:2px 6px;
-    gap:6px;overflow:hidden;
+    display:none;
   }
   .logo{font-size:clamp(18px,3.2vw,27px);line-height:1.05;white-space:nowrap}
   .logo small{font-size:8px;margin-top:2px}
@@ -203,7 +202,7 @@ z-index:0}
   .actions .btn{font-size:11px;padding:4px 6px;border-width:1px;border-radius:7px;box-shadow:0 2px 0 #120b18;white-space:nowrap}
 
   .main{
-    grid-column:1;grid-row:2;
+    grid-column:1;grid-row:1;
     min-width:0;min-height:0;height:100%;
     display:grid;
     grid-template-columns:minmax(0,1.15fr) minmax(190px,.85fr);
@@ -226,7 +225,7 @@ z-index:0}
   }
   .wheel-wrap{
     position:absolute;
-    left:50%;top:50%;
+    left:50%;top:calc(50% - 45px);
     width:min(56vh,72vw,330px);
     height:min(56vh,72vw,330px);
     min-width:0;min-height:0;
@@ -297,12 +296,9 @@ z-index:0}
 
   /* very short landscape screens: keep every game element inside the viewport */
   @media (max-height:560px){
-    #app{grid-template-rows:38px minmax(0,1fr);gap:3px;padding:3px}
-    header{height:38px}
-    .logo{font-size:18px}.logo small{font-size:7px}
-    .actions .btn{font-size:9px;padding:3px 5px}
+    #app{grid-template-rows:minmax(0,1fr);gap:3px;padding:3px}
     .main{grid-template-rows:36px minmax(0,1fr) 30px;gap:3px}
-    .wheel-wrap{width:min(48vh,68vw,270px);height:min(48vh,68vw,270px)}
+    .wheel-wrap{top:calc(50% - 30px);width:min(48vh,68vw,270px);height:min(48vh,68vw,270px)}
     .result-box{height:36px}.controlbar{min-height:30px}
   }
 

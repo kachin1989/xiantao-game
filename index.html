@@ -222,11 +222,16 @@ z-index:0}
     min-width:0;min-height:0;
     border-width:1px;border-radius:10px;
     overflow:hidden;
+    position:relative;
   }
   .wheel-wrap{
-    width:min(58vh,calc(100% - 8px),340px);
-    height:min(58vh,calc(100% - 8px),340px);
+    position:absolute;
+    left:50%;top:50%;
+    width:min(56vh,72vw,330px);
+    height:min(56vh,72vw,330px);
     min-width:0;min-height:0;
+    transform:translate(-50%,-50%);
+    flex:none;
   }
   .wheel-shell{border-width:6px;box-shadow:0 0 0 3px #4c2611,inset 0 0 0 4px #f5d56b,0 10px 24px #000c}
   .pointer{top:-2px;border-left-width:10px;border-right-width:10px;border-top-width:23px}
@@ -257,7 +262,11 @@ z-index:0}
   .result-box{height:42px;border-width:1px;border-radius:6px}
   .result-box .result-label{font-size:7px;margin-bottom:1px}
   .result-box strong{font-size:15px}
-  .wheel-status{margin:3px auto 0;padding:2px 8px;border-width:1px;font-size:8px}
+  .wheel-status{
+    position:absolute;left:50%;bottom:3px;transform:translateX(-50%);
+    margin:0;padding:2px 8px;border-width:1px;font-size:8px;
+    z-index:3;
+  }
 
   .controlbar{
     grid-column:1/-1;grid-row:3;
@@ -293,7 +302,7 @@ z-index:0}
     .logo{font-size:18px}.logo small{font-size:7px}
     .actions .btn{font-size:9px;padding:3px 5px}
     .main{grid-template-rows:36px minmax(0,1fr) 30px;gap:3px}
-    .wheel-wrap{width:min(50vh,calc(100% - 6px),285px);height:min(50vh,calc(100% - 6px),285px)}
+    .wheel-wrap{width:min(48vh,68vw,270px);height:min(48vh,68vw,270px)}
     .result-box{height:36px}.controlbar{min-height:30px}
   }
 

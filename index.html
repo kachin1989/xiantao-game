@@ -180,6 +180,115 @@ radial-gradient(circle at 76% 38%,#fff 0 1px,transparent 2px),
 linear-gradient(180deg,#35548622,#16102688);
 z-index:0}
 .wheel-panel>*{position:relative;z-index:1}
+
+/* PWA Step 2 — 手机横屏一屏布局：页面本身不滚动，最近25局只在固定区域内部滚动 */
+@media (orientation: landscape) and (max-height: 700px) and (max-width: 1100px){
+  html,body{width:100%;height:100%;overflow:hidden}
+  #app{
+    width:100vw;height:100vh;min-width:0;min-height:0;
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(205px,29vw);
+    grid-template-rows:auto minmax(0,1fr);
+    gap:5px;padding:5px;
+    overflow:hidden;
+  }
+  header{
+    grid-column:1/-1;
+    min-height:42px;padding:2px 6px;
+    gap:6px;overflow:hidden;
+  }
+  .logo{font-size:clamp(18px,3.2vw,27px);line-height:1.05;white-space:nowrap}
+  .logo small{font-size:8px;margin-top:2px}
+  .actions{gap:3px;flex-wrap:nowrap;overflow:hidden}
+  .actions .btn{font-size:11px;padding:4px 6px;border-width:1px;border-radius:7px;box-shadow:0 2px 0 #120b18;white-space:nowrap}
+
+  .main{
+    grid-column:1;grid-row:2;
+    min-width:0;min-height:0;
+    display:grid;
+    grid-template-columns:minmax(0,1.18fr) minmax(205px,.82fr);
+    grid-template-rows:auto minmax(0,1fr) auto;
+    gap:4px;
+    overflow:hidden;
+  }
+  .moneybar{grid-column:1/-1;gap:4px;margin:0}
+  .info{padding:4px 7px;border-width:1px;border-radius:8px;min-width:0}
+  .info .label{font-size:8px;white-space:nowrap}
+  .value{font-size:17px;line-height:1.05}
+  .countdown .value{font-size:20px}
+
+  .wheel-panel{
+    grid-column:1;grid-row:2;
+    min-width:0;min-height:0;
+    border-width:1px;border-radius:10px;
+    overflow:hidden;
+  }
+  .wheel-wrap{
+    width:min(66vh,100%,360px);
+    height:min(66vh,100%,360px);
+    min-width:0;min-height:0;
+  }
+  .wheel-shell{border-width:6px;box-shadow:0 0 0 3px #4c2611,inset 0 0 0 4px #f5d56b,0 10px 24px #000c}
+  .pointer{top:-2px;border-left-width:10px;border-right-width:10px;border-top-width:23px}
+  .person-char{font-size:clamp(22px,4.2vw,38px)}
+  .center{border-width:4px;font-size:clamp(14px,2.8vw,21px);box-shadow:inset 0 0 0 3px #8e3415,0 5px 10px #000b,0 0 16px #ffb23c77}
+  .result-badge{top:4px;padding:3px 8px;font-size:9px}
+
+  .bets-panel{
+    grid-column:2;grid-row:2;
+    min-width:0;min-height:0;
+    align-self:stretch;margin:0;padding:4px;
+    border-width:1px;border-radius:9px;
+    overflow:hidden;
+    display:flex;flex-direction:column;
+  }
+  .bet-title{font-size:12px;margin:0 0 3px}
+  .bet-matrix-head{grid-template-columns:38px repeat(3,minmax(0,1fr));gap:3px;margin-bottom:3px}
+  .color-head{height:22px;border-width:1px;border-radius:5px;font-size:9px}
+  .bet-grid{grid-template-columns:38px repeat(3,minmax(0,1fr));grid-auto-rows:minmax(0,1fr);gap:3px;flex:1;min-height:0}
+  .row-person{border-width:1px;border-radius:5px;font-size:18px}
+  .bet{min-height:0;height:auto;border-width:1px;border-radius:5px;font-size:11px;box-shadow:inset 0 0 8px #fff2,0 2px 0 #160a19}
+  .bet strong{font-size:16px;margin-top:0}
+  .bet .stake{font-size:7px;left:2px;right:2px;bottom:1px;padding:1px}
+  .bet.hit{outline-width:1px}
+  .bet.hit::before{top:-7px;padding:1px 4px;font-size:7px;border-width:1px}
+  .bet.hit::after{box-shadow:inset 0 0 10px #fff,0 0 10px #fff,0 0 20px #ffd65a}
+  .result-display{gap:3px;margin-top:3px}
+  .result-box{height:42px;border-width:1px;border-radius:6px}
+  .result-box .result-label{font-size:7px;margin-bottom:1px}
+  .result-box strong{font-size:15px}
+  .wheel-status{margin:3px auto 0;padding:2px 8px;border-width:1px;font-size:8px}
+
+  .controlbar{
+    grid-column:1/-1;grid-row:3;
+    min-height:34px;margin:0;padding:3px 5px;gap:4px;
+    border-radius:7px;
+    font-size:10px;
+    overflow:hidden;
+  }
+  .chips{gap:3px}
+  .chip{min-width:38px;height:28px;border-width:1px;border-radius:6px;font-size:10px}
+  .clear{margin-left:auto;font-size:10px;padding:4px 7px}
+
+  .history{
+    grid-column:2;grid-row:2;
+    min-width:0;min-height:0;height:auto;margin:0;
+    padding:5px;border-width:1px;border-radius:10px;
+    display:grid;grid-template-rows:auto minmax(0,1fr) auto;
+    overflow:hidden;
+  }
+  .history h3{margin:0 0 3px;font-size:12px}
+  .history-head,.history-row{grid-template-columns:30px minmax(0,1fr) 38px 38px;gap:3px}
+  .history-head{font-size:7px;padding:2px}
+  .history-row{height:21px;font-size:7px}
+  .history-list{min-height:0;overflow:auto}
+  .dot{width:9px;height:9px}
+  .person-mini{font-size:10px}
+  .history-foot{font-size:7px;padding-top:3px;white-space:nowrap;overflow:hidden}
+
+  .modal-card{width:min(92vw,500px);max-height:86vh;padding:12px}
+}
+
 </style>
 </head>
 <body>
